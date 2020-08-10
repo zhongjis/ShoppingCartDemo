@@ -1,4 +1,5 @@
 import React from "react";
+import data from "./data";
 import "./App.css";
 
 function App() {
@@ -31,7 +32,6 @@ function App() {
           <li>
             <a href="index.html">Pants</a>
           </li>
-
           <li>
             <a href="index.html">Shirts</a>
           </li>
@@ -40,96 +40,25 @@ function App() {
       <main className="main">
         <div className="content">
           <ul className="products">
-            <li>
-              <div className="product">
-                <img
-                  className="product-image"
-                  src="/images/d1.jpeg"
-                  alt="product"
-                />
-                <div className="product-name">
-                  <a href="product.html">Slim Shirt</a>
+          {
+            data.products.map(product => 
+              <li>
+                <div className="product">
+                  <img
+                    className="product-image"
+                    src={product.image}
+                    alt="product"
+                  />
+                  <div className="product-name">
+                    <a href="product.html">{product.name}</a>
+                  </div>
+                  <div className="product-brand">{product.brand}</div>
+                  <div className="product-price">${product.price}</div>
+                  <div className="product-rating">{product.rating} Stars ({product.numReviews} Reviews)</div>
                 </div>
-                <div className="product-brand">Nike</div>
-                <div className="product-price">$60</div>
-                <div className="product-rating">4.5 Stars (10 Reviews)</div>
-              </div>
-            </li>
-            <li>
-              <div className="product">
-                <img
-                  className="product-image"
-                  src="/images/d1.jpeg"
-                  alt="product"
-                />
-                <div className="product-name">
-                  <a href="product.html">Slim Shirt</a>
-                </div>
-                <div className="product-brand">Nike</div>
-                <div className="product-price">$60</div>
-                <div className="product-rating">4.5 Stars (10 Reviews)</div>
-              </div>
-            </li>
-            <li>
-              <div className="product">
-                <img
-                  className="product-image"
-                  src="/images/d1.jpeg"
-                  alt="product"
-                />
-                <div className="product-name">
-                  <a href="product.html">Slim Shirt</a>
-                </div>
-                <div className="product-brand">Nike</div>
-                <div className="product-price">$60</div>
-                <div className="product-rating">4.5 Stars (10 Reviews)</div>
-              </div>
-            </li>
-            <li>
-              <div className="product">
-                <img
-                  className="product-image"
-                  src="/images/d1.jpeg"
-                  alt="product"
-                />
-                <div className="product-name">
-                  <a href="product.html">Slim Shirt</a>
-                </div>
-                <div className="product-brand">Nike</div>
-                <div className="product-price">$60</div>
-                <div className="product-rating">4.5 Stars (10 Reviews)</div>
-              </div>
-            </li>
-            <li>
-              <div className="product">
-                <img
-                  className="product-image"
-                  src="/images/d1.jpeg"
-                  alt="product"
-                />
-                <div className="product-name">
-                  <a href="product.html">Slim Shirt</a>
-                </div>
-                <div className="product-brand">Nike</div>
-                <div className="product-price">$60</div>
-                <div className="product-rating">4.5 Stars (10 Reviews)</div>
-              </div>
-            </li>
-            <li>
-              <div className="product">
-                <img
-                  className="product-image"
-                  src="/images/d1.jpeg"
-                  alt="product"
-                />
-                <div className="product-name">
-                  <a href="product.html">Slim Shirt</a>
-                </div>
-                <div className="product-brand">Nike</div>
-                <div className="product-price">$60</div>
-                <div className="product-rating">4.5 Stars (10 Reviews)</div>
-              </div>
-            </li>
+              </li>
+            )
+          }
           </ul>
         </div>
       </main>
