@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node backend/server.js",
-    "startserver": "nodemon --watch backend --exec babel-node backend/server.js" 
+    "startserver": "nodemon --watch backend --exec babel-node backend/server.js",
     "install-frontend": "cd frontend && npm install",
     "build": "cd frontend && npm run build",
     "heroku-postbuild": "npm run install-frontend && npm run build"
