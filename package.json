@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "babel-node backend/server.js",
     "startserver": "nodemon --watch backend --exec babel-node backend/server.js",
     "install-frontend": "cd frontend && npm install",
     "build": "cd frontend && npm run build",
@@ -13,13 +13,16 @@
   "author": "Zhongjie Shen",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1",
-    "nodemon": "^2.0.4"
+    "express": "^4.17.1"
   },
   "devDependencies": {
+    "nodemon": "^2.0.4",
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.1",
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.0"
+  },
+  "engines": {
+    "node": "13.x"
   }
 }
