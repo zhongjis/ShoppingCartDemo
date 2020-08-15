@@ -1,6 +1,6 @@
 import express from 'express';
 
-import data from './src/data';
+import data from './data';
 
 const app = express();
 
