@@ -4,11 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node backend/server.js",
-    "startserver": "nodemon --watch backend --exec babel-node backend/server.js",
-    "install-frontend": "cd frontend && npm install",
-    "build": "cd frontend && npm run build",
-    "heroku-postbuild": "npm run install-frontend && npm run build"
+    "start": "nodemon --watch backend --exec babel-node backend/server.js",
+    "build": "rm -rf dist && babel backend -d dist",
+    "heroku-postbuild": "npm run build && cd frontend && npm install && npm run build"
   },
   "author": "Zhongjie Shen",
   "license": "MIT",
@@ -23,6 +21,7 @@
     "@babel/preset-env": "^7.11.0"
   },
   "engines": {
-    "node": "13.x"
+    "node": "12.4.0",
+    "npm": "6.9.0"
   }
 }
