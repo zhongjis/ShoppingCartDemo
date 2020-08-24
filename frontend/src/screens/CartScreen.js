@@ -7,7 +7,6 @@ function CartScreen(props) {
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
 
-    console.log(props);
     const productId = props.match.params.id;
     const qty = props.location.search
         ? Number(props.location.search.split("=")[1])
@@ -26,29 +25,49 @@ function CartScreen(props) {
                 <ul className="cart-list-container">
                     <li>
                         <h3>Shopping Cart</h3>
-                        <div> Price </div>
+                        <div>Price</div>
                     </li>
                     {cartItems.length === 0 ? (
-                        <div>Cart is Empty</div>
+                        <div>Cart is empty</div>
                     ) : (
-                        cartItems.map((item) => {
-                            return (
-                                <div>
-                                    <div className="cart-name">
-                                        <div>{item.name}</div>
-                                        <div>
-                                            Qty:
-                                            <select>
-                                                <option value="1"> 1 </option>
-                                                <option value="2"> 2 </option>
-                                                <option value="3"> 3 </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div>{item.price}</div>
+                        cartItems.map((item) => (
+                            <li>
+                                <div className="cart-image">
+                                    <img src={item.image} alt="product" />
                                 </div>
-                            );
-                        })
+                                <div className="cart-name">
+                                    <div>{item.name}</div>
+                                    <div>
+                                        Qty:
+                                        <select
+                                            value={item.qty}
+                                            onChange={(e) =>
+                                                dispatch(
+                                                    addToCart(
+                                                        item.product,
+                                                        e.target.value
+                                                    )
+                                                )
+                                            }
+                                        >
+                                            {[
+                                                ...Array(
+                                                    item.countInStock
+                                                ).keys(),
+                                            ].map((x) => (
+                                                <option
+                                                    key={x + 1}
+                                                    value={x + 1}
+                                                >
+                                                    {x + 1}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="cart-price">${item.price}</div>
+                            </li>
+                        ))
                     )}
                 </ul>
             </div>
@@ -58,7 +77,7 @@ function CartScreen(props) {
                     : $ {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
                 </h3>
                 <button
-                    className="button-primary"
+                    className="button primary full-width"
                     disabled={cartItems.length === 0}
                 >
                     Proceed to Checkout
